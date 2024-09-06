@@ -1,0 +1,34 @@
+﻿@model ToDoList.Models.TodoItemsListViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">To do list</h1>
+
+    <p>This is a simple to do list application.</p>
+    <div>
+        <h2>Your To-Do Items:</h2>
+        @if (Model.ListToDoItems.Any())
+        {
+            <ul>
+                @foreach (var item in Model.ListToDoItems)
+                {
+                    <li>
+                        <p>@item.Id</p>
+                        <strong>@item.Description</strong>
+                        <p>@item.IsCompleted</p>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No to-do items found.</p>
+        }
+
+        <a asp-action="Create">Create a new to-do item</a>
+
+    </div>
+</div>
