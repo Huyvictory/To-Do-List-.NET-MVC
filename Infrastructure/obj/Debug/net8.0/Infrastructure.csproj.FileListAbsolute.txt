@@ -16,3 +16,5 @@ C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Infrastruct
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Infrastructure\bin\Debug\net8.0\Infrastructure.runtimeconfig.json
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
