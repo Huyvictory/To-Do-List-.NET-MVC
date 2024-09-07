@@ -36,3 +36,4 @@ C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\ToDoList\bi
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\ToDoList\bin\Debug\net8.0\UseCases.pdb
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.csproj.AssemblyReference.cache
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.csproj.CopyComplete
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.sourcelink.json

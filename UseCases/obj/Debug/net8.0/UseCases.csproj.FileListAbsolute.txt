@@ -13,3 +13,4 @@ C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UseCases\ob
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UseCases\obj\Debug\net8.0\refint\UseCases.dll
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UseCases\obj\Debug\net8.0\UseCases.pdb
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UseCases\obj\Debug\net8.0\ref\UseCases.dll
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UseCases\obj\Debug\net8.0\UseCases.sourcelink.json

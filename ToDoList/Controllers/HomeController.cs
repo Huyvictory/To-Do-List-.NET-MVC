@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Models;
-using UseCases;
 
 namespace ToDoList.Controllers;
 
@@ -39,11 +38,87 @@ public class HomeController : Controller
         {
             _toDoListManager.AddToDoItem(new ToDoItem()
             {
-                Id = 1,
+                Id = toDoItemViewModel.Id,
                 Description = toDoItemViewModel.Description,
                 IsCompleted = false
             });
         }
+
+        return RedirectToAction("Index");
+    }
+
+    [HttpGet]
+    public IActionResult Edit(string id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var todoItem = _toDoListManager.GetById(id);
+        if (todoItem == null)
+        {
+            return NotFound();
+        }
+
+        return View(new ToDoItemViewModel()
+        {
+            Id = todoItem.Id,
+            Description = todoItem.Description,
+            IsCompleted = todoItem.IsCompleted
+        });
+    }
+
+    // POST: Home/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit(string id, [Bind("Id,Description,IsCompleted")] ToDoItemViewModel todoItem)
+    {
+        if (id != todoItem.Id)
+        {
+            return NotFound();
+        }
+
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _toDoListManager.Update(new ToDoItem()
+                {
+                    Id = todoItem.Id,
+                    Description = todoItem.Description,
+                    IsCompleted = todoItem.IsCompleted
+                });
+            }
+            catch (Exception)
+            {
+                if (_toDoListManager.GetById(todoItem.Id) == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(todoItem);
+    }
+
+    public IActionResult ToggleComplete(string id)
+    {
+        _toDoListManager.ToggleCompleted(id);
+
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public IActionResult Delete(string id)
+    {
+        _toDoListManager.Delete(id);
 
         return RedirectToAction("Index");
     }

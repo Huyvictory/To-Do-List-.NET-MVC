@@ -9,3 +9,4 @@ C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Entities\ob
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Entities\obj\Debug\net8.0\refint\Entities.dll
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Entities\obj\Debug\net8.0\Entities.pdb
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Entities\obj\Debug\net8.0\ref\Entities.dll
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\Entities\obj\Debug\net8.0\Entities.sourcelink.json

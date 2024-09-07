@@ -104,3 +104,14 @@ C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bi
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\Entities.pdb
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\Infrastructure.pdb
 C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\UseCases.pdb
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\obj\Debug\net8.0\UnitTest.sourcelink.json
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\ToDoList.deps.json
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\ToDoList.runtimeconfig.json
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\appsettings.json
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\ToDoList.staticwebassets.runtime.json
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\ToDoList.exe
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\Castle.Core.dll
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\Moq.dll
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\ToDoList.dll
+C:\Users\vomin\OneDrive\HuyvictoryPC\Learn .NET with Mr.Nam\ToDoList\UnitTest\bin\Debug\net8.0\ToDoList.pdb

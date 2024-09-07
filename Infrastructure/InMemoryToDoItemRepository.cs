@@ -13,12 +13,17 @@ public class InMemoryToDoItemRepository : IToDoItemRepository
         _items = new List<ToDoItem>();
     }
 
+    public ToDoItem? GetById(string id)
+    {
+        return _items.FirstOrDefault(i => i.Id == id);
+    }
+
     public void Add(ToDoItem item)
     {
         _items.Add(item);
     }
 
-    public void Delete(int id)
+    public void Delete(string id)
     {
         var item = _items.FirstOrDefault(i => i.Id == id);
         if (item != null)
@@ -30,11 +35,6 @@ public class InMemoryToDoItemRepository : IToDoItemRepository
     public IEnumerable<ToDoItem> GetToDoItemsList()
     {
         return _items;
-    }
-
-    public ToDoItem GetById(int id)
-    {
-        return _items.FirstOrDefault(i => i.Id == id);
     }
 
     public void Update(ToDoItem item)

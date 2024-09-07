@@ -5,8 +5,8 @@ namespace UseCases;
 public interface IToDoItemRepository
 {
     IEnumerable<ToDoItem> GetToDoItemsList();
-    ToDoItem? GetById(int id);
+    ToDoItem? GetById(string id);
     void Add(ToDoItem toDoItem);
     void Update(ToDoItem toDoItem);
-    void Delete(int id);
+    void Delete(string id);
 }

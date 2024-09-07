@@ -16,22 +16,32 @@ public class ToDoListManager
         return _toDoItemRepository.GetToDoItemsList();
     }
 
+    public ToDoItem? GetById(string id)
+    {
+        return _toDoItemRepository.GetById(id);
+    }
+
     public void AddToDoItem(ToDoItem toDoItem)
     {
         _toDoItemRepository.Add(toDoItem);
     }
 
-    public void MarkCompleted(int id)
+    public void ToggleCompleted(string id)
     {
         var toDoItem = _toDoItemRepository.GetById(id);
         if (toDoItem != null)
         {
-            toDoItem.IsCompleted = true;
+            toDoItem.IsCompleted = !toDoItem.IsCompleted;
             _toDoItemRepository.Update(toDoItem);
         }
     }
 
-    public void Delete(int id)
+    public void Update(ToDoItem toDoItem)
+    {
+        _toDoItemRepository.Update(toDoItem);
+    }
+
+    public void Delete(string id)
     {
         var toDoItem = _toDoItemRepository.GetById(id);
         if (toDoItem != null)
