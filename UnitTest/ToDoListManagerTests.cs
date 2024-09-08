@@ -1,4 +1,5 @@
 using Entities;
+using Microsoft.Extensions.Logging;
 using Moq;
 using UseCases;
 
@@ -14,8 +15,9 @@ public class ToDoListManagerTests
     {
         _mockRepository = new Mock<IToDoItemRepository>();
         _mockUnitOfWork = new Mock<IUnitOfWork>();
+        Mock<ILogger<ToDoListManager>> mockLogger = new();
         _mockUnitOfWork.Setup(uow => uow.ToDoItems).Returns(_mockRepository.Object);
-        _manager = new ToDoListManager(_mockUnitOfWork.Object);
+        _manager = new ToDoListManager(_mockUnitOfWork.Object, mockLogger.Object);
     }
 
     [Fact]

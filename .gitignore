@@ -60,3 +60,6 @@ Thumbs.db
 
 # Ignore wwwroot directory
 wwwroot/
+
+# Ignore secrets file
+appsettings.secrets.json

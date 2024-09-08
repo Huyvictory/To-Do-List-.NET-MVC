@@ -3,11 +3,20 @@ using Infrastructure.Data;
 using Infrastructure.Repository;
 using Infrastructure.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace UnitTest.UnitOfWork;
 
 public class SqlServerUnitOfWorkTests
 {
+    private readonly Mock<ILogger<SqlServerUnitOfWork>> _mockLogger;
+
+    public SqlServerUnitOfWorkTests()
+    {
+        _mockLogger = new Mock<ILogger<SqlServerUnitOfWork>>();
+    }
+
     private DbContextOptions<ToDoDbContext> CreateNewContextOptions()
     {
         return new DbContextOptionsBuilder<ToDoDbContext>()
@@ -21,7 +30,7 @@ public class SqlServerUnitOfWorkTests
         // Arrange
         var options = CreateNewContextOptions();
         await using var context = new ToDoDbContext(options);
-        var unitOfWork = new SqlServerUnitOfWork(context);
+        var unitOfWork = new SqlServerUnitOfWork(context, _mockLogger.Object);
 
         var todoItem = new ToDoItem() { Description = "Test Item", IsCompleted = false };
 
@@ -40,7 +49,7 @@ public class SqlServerUnitOfWorkTests
         // Arrange
         var options = CreateNewContextOptions();
         await using var context = new ToDoDbContext(options);
-        var unitOfWork = new SqlServerUnitOfWork(context);
+        var unitOfWork = new SqlServerUnitOfWork(context, _mockLogger.Object);
 
         // Act
         var repository = unitOfWork.ToDoItems;
