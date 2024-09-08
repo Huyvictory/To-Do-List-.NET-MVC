@@ -1,6 +1,7 @@
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ToDoList.DbContext;
+namespace Infrastructure.Data;
 
 public class ToDoDbContext : Microsoft.EntityFrameworkCore.DbContext
 {

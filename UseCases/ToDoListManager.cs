@@ -4,49 +4,53 @@ namespace UseCases;
 
 public class ToDoListManager
 {
-    private readonly IToDoItemRepository _toDoItemRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public ToDoListManager(IToDoItemRepository toDoItemRepository)
+    public ToDoListManager(IUnitOfWork unitOfWork)
     {
-        _toDoItemRepository = toDoItemRepository;
+        _unitOfWork = unitOfWork;
     }
 
-    public IEnumerable<ToDoItem> GetToDoItemsList()
+    public async Task<IEnumerable<ToDoItem>> GetToDoItemsList()
     {
-        return _toDoItemRepository.GetToDoItemsList();
+        return await _unitOfWork.ToDoItems.GetAllAsync();
     }
 
-    public ToDoItem? GetById(string id)
+    public async Task<ToDoItem?> GetById(string id)
     {
-        return _toDoItemRepository.GetById(id);
+        return await _unitOfWork.ToDoItems.GetByIdAsync(id);
     }
 
-    public void AddToDoItem(ToDoItem toDoItem)
+    public async Task AddToDoItem(ToDoItem toDoItem)
     {
-        _toDoItemRepository.Add(toDoItem);
+        await _unitOfWork.ToDoItems.AddAsync(toDoItem);
+        await _unitOfWork.CompleteAsync();
     }
 
-    public void ToggleCompleted(string id)
+    public async Task ToggleCompleted(string id)
     {
-        var toDoItem = _toDoItemRepository.GetById(id);
+        var toDoItem = await _unitOfWork.ToDoItems.GetByIdAsync(id);
         if (toDoItem != null)
         {
             toDoItem.IsCompleted = !toDoItem.IsCompleted;
-            _toDoItemRepository.Update(toDoItem);
+            await _unitOfWork.ToDoItems.UpdateAsync(toDoItem);
+            await _unitOfWork.CompleteAsync();
         }
     }
 
-    public void Update(ToDoItem toDoItem)
+    public async Task Update(ToDoItem toDoItem)
     {
-        _toDoItemRepository.Update(toDoItem);
+        await _unitOfWork.ToDoItems.UpdateAsync(toDoItem);
+        await _unitOfWork.CompleteAsync();
     }
 
-    public void Delete(string id)
+    public async Task Delete(string id)
     {
-        var toDoItem = _toDoItemRepository.GetById(id);
+        var toDoItem = await _unitOfWork.ToDoItems.GetByIdAsync(id);
         if (toDoItem != null)
         {
-            _toDoItemRepository.Delete(id);
+            await _unitOfWork.ToDoItems.DeleteAsync(id);
+            await _unitOfWork.CompleteAsync();
         }
     }
 }

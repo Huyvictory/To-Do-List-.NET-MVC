@@ -1,20 +1,20 @@
+using Infrastructure.Data;
+using Infrastructure.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
-using ToDoList.DbContext;
-using ToDoList.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// // Implementation of IToDoItemRepository using local database (InMemoryRepository)
-// builder.Services.AddSingleton<IToDoItemRepository, InMemoryToDoItemRepository>();
+// Implement In Memory Unit of Work (InMemoryUnitOfWork)
+builder.Services.AddSingleton<IUnitOfWork, InMemoryUnitOfWork>();
 
-// Implementation of IToDoItemRepository using EntityFramework and SQL Server database (SqlServerToDoItemRepository)
-builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddScoped<IToDoItemRepository, SqlServerToDoItemRepository>();
+// Implement Sql Server Unit of Work (SqlServerUnitOfWork)
+// builder.Services.AddDbContext<ToDoDbContext>(options =>
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//
+// builder.Services.AddScoped<IUnitOfWork, SqlServerUnitOfWork>();
 
 builder.Services.AddScoped<ToDoListManager>();
 

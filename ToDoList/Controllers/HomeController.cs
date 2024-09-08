@@ -15,13 +15,14 @@ public class HomeController : Controller
         _toDoListManager = toDoListManager;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var toDoItems = _toDoListManager.GetToDoItemsList();
+        var toDoItems = await _toDoListManager.GetToDoItemsList();
+        _logger.LogInformation($"Retrieved {toDoItems.Count()} items");
         return View(new TodoItemsListViewModel
         {
             ListToDoItems = toDoItems.Select(i => new ToDoItemViewModel()
-                { Id = i.Id, Description = i.Description, IsCompleted = i.IsCompleted })
+                { Id = i.Id, Description = i.Description, IsCompleted = i.IsCompleted }).ToList()
         });
     }
 
@@ -32,11 +33,11 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(ToDoItemViewModel toDoItemViewModel)
+    public async Task<IActionResult> Create(ToDoItemViewModel toDoItemViewModel)
     {
         if (ModelState.IsValid)
         {
-            _toDoListManager.AddToDoItem(new ToDoItem()
+            await _toDoListManager.AddToDoItem(new ToDoItem()
             {
                 Id = toDoItemViewModel.Id,
                 Description = toDoItemViewModel.Description,
@@ -48,14 +49,9 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    public IActionResult Edit(string id)
+    public async Task<IActionResult> Edit(string id)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var todoItem = _toDoListManager.GetById(id);
+        var todoItem = await _toDoListManager.GetById(id);
         if (todoItem == null)
         {
             return NotFound();
@@ -72,7 +68,7 @@ public class HomeController : Controller
     // POST: Home/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(string id, [Bind("Id,Description,IsCompleted")] ToDoItemViewModel todoItem)
+    public async Task<IActionResult> Edit(string id, [Bind("Id,Description,IsCompleted")] ToDoItemViewModel todoItem)
     {
         if (id != todoItem.Id)
         {
@@ -83,7 +79,7 @@ public class HomeController : Controller
         {
             try
             {
-                _toDoListManager.Update(new ToDoItem()
+                await _toDoListManager.Update(new ToDoItem()
                 {
                     Id = todoItem.Id,
                     Description = todoItem.Description,
@@ -92,14 +88,12 @@ public class HomeController : Controller
             }
             catch (Exception)
             {
-                if (_toDoListManager.GetById(todoItem.Id) == null)
+                if (await _toDoListManager.GetById(todoItem.Id) == null)
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
             return RedirectToAction(nameof(Index));
@@ -108,17 +102,17 @@ public class HomeController : Controller
         return View(todoItem);
     }
 
-    public IActionResult ToggleComplete(string id)
+    public async Task<IActionResult> ToggleComplete(string id)
     {
-        _toDoListManager.ToggleCompleted(id);
+        await _toDoListManager.ToggleCompleted(id);
 
         return RedirectToAction("Index");
     }
 
     [HttpPost]
-    public IActionResult Delete(string id)
+    public async Task<IActionResult> Delete(string id)
     {
-        _toDoListManager.Delete(id);
+        await _toDoListManager.Delete(id);
 
         return RedirectToAction("Index");
     }
