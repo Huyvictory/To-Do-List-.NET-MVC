@@ -31,7 +31,14 @@ public class SqlServerToDoItemRepository : IToDoItemRepository
 
     public async Task UpdateAsync(ToDoItem toDoItem)
     {
-        _context.Entry(toDoItem).State = EntityState.Modified;
+        var existingItem = await _context.ToDoItems.FindAsync(toDoItem.Id);
+        if (existingItem == null)
+        {
+            throw new ArgumentException($"An item with id {toDoItem.Id} was not found.", nameof(toDoItem));
+        }
+
+        _context.Entry(existingItem).CurrentValues.SetValues(toDoItem);
+
         await Task.CompletedTask;
     }
 
